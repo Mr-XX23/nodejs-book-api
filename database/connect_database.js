@@ -4,8 +4,6 @@ import { Sequelize, DataTypes } from "sequelize";
 
 // Importing the book models
 import booksModel from "./models/bookModels.js"; 
-import userMOdel from "./models/userModels.js";
-
 
 // Importing dotenv to load environment variables from .env file
 import dotenv from "dotenv";
@@ -40,7 +38,6 @@ db.sequelize = sequelizeObject;
 
 // Trggering the model to create the table in the database
 db.bookData = booksModel( sequelizeObject, DataTypes );
-db.userData = userMOdel( sequelizeObject, DataTypes );
 
 // Sync the models with the database
 db.sequelize.sync({ alter : false }).then(() => {
@@ -48,4 +45,4 @@ db.sequelize.sync({ alter : false }).then(() => {
 });
 
 // export the database connection and model
-export default db;
+export const bookData = db.bookData;

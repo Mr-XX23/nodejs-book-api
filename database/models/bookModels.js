@@ -1,7 +1,7 @@
 
 // This file defines the model for the books table in the database
 const booksModel  = ( sequelize, DataTypes ) => {
-    const Boook = sequelize.define("book", {
+    const Book = sequelize.define("book", {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -11,21 +11,21 @@ const booksModel  = ( sequelize, DataTypes ) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        BookPrice : {
+        bookPrice : {
             type : DataTypes.INTEGER,
             allowNull : false,
         },
-        BookAuthor : {
+        bookAuthor : {
             type : DataTypes.STRING,
             allowNull : false,
         },
-        BookGenre : {
+        bookGenre : {
             type : DataTypes.STRING,
             allowNull : false,
         },
     })
 
-    return Boook;
+    return Book;
 }
 
 export default booksModel;
