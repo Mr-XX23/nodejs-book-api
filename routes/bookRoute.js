@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { fetchBook, addBook, deleteBook, updateBook, fetchBookById } from '../controllers/bookController.js';
+import { start, fetchBook, addBook, deleteBook, updateBook, fetchBookById } from '../controllers/bookController.js';
 
 // router.route('/books').get(fetchBook);
 
@@ -13,6 +13,7 @@ import { fetchBook, addBook, deleteBook, updateBook, fetchBookById } from '../co
 const router = express.Router();
 
 // New methods
+router.route('/').get(start)
 router.route('/books').get(fetchBook).post(addBook);
 router.route('/books/:id').delete(deleteBook).patch(updateBook).get(fetchBookById);
 

@@ -1,5 +1,11 @@
 import { bookData } from '../database/connect_database.js';
 
+export const start = (req, res) => {
+    res.json({
+        message: "Welcome to the Book API"
+    });
+}
+
 export const fetchBook = async (req, res) => {
     const fetchBook = await bookData.findAll();
     res.json({
