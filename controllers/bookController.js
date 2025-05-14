@@ -1,4 +1,4 @@
-import { bookData } from '../database/connect_database.js';
+import { models } from '../database/connect_database.js';
 
 export const start = (req, res) => {
     res.json({
@@ -7,7 +7,7 @@ export const start = (req, res) => {
 }
 
 export const fetchBook = async (req, res) => {
-    const fetchBook = await bookData.findAll();
+    const fetchBook = await models.bookData.findAll();
     res.json({
         message: "Books fetched successfully",
         data: fetchBook
@@ -16,7 +16,7 @@ export const fetchBook = async (req, res) => {
 
 export const addBook = async (req, res) => {
     const { bookName, bookPrice, bookAuthor, bookGenre } = req.body;
-    await bookData.create({
+    await models.bookData.create({
         bookName,
         bookPrice,
         bookAuthor,
@@ -29,7 +29,7 @@ export const addBook = async (req, res) => {
 
 export const deleteBook = async (req, res) => {
     const { id } = req.params;
-    await bookData.destroy({
+    await models.bookData.destroy({
         where: { id }
     });
     res.json({
@@ -40,7 +40,7 @@ export const deleteBook = async (req, res) => {
 export const updateBook = async (req, res) => {
     const { id } = req.params;
     const { bookName, bookPrice, bookAuthor, bookGenre } = req.body;
-    await bookData.update({
+    await models.bookData.update({
         bookName,
         bookPrice,
         bookAuthor,
@@ -61,7 +61,7 @@ export const fetchBookById = async (req, res) => {
     //     where: { id }
     // });
 
-    const fetchSingleBook = await bookData.findByPk(id);
+    const fetchSingleBook = await models.bookData.findByPk(id);
     if (!fetchSingleBook) {
         return res.status(404).json({
             message: "Book not found"
