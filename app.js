@@ -8,6 +8,7 @@ const app = express();
 app.use(express.json());
 
 import bookRoute from './routes/bookRoute.js';
+import authRoute from './routes/authRoute.js';
 
 // app.get('/getBooks', fetchBook)
 
@@ -18,6 +19,7 @@ import bookRoute from './routes/bookRoute.js';
 // app.patch('/updateBook/:id', updateBook)
 
 app.use('/api', bookRoute)
+app.use('/api', authRoute)
 
 // listening to the server on port 8000
 app.listen(8000, function () {

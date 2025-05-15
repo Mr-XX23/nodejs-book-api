@@ -3,14 +3,9 @@
 // This file defines the user model for the database using Sequelize ORM.
 const userModel = ( Sequelize, DataTypes) => {
     const User = Sequelize.define('user', {
-        id: {
-            type : DataTypes.INTEGER,
-            primaryKey : true,
-            autoIncrement : true,
-        },
         username : {
             type : DataTypes.STRING,
-            allowNull : false,
+            allowNull : true,
             unique : true,
         },
         email: {
