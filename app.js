@@ -1,10 +1,13 @@
 
 // importing express 
 import express from 'express';
+import cors from 'cors';
 
 // initializing express server
 const app = express();
-
+app.use(cors({
+    origin: '*',
+}));
 app.use(express.json());
 
 import bookRoute from './routes/bookRoute.js';
